@@ -12,8 +12,13 @@ def open_server_socket(port=4444):
     s.bind((socket.gethostname(), port))
     return s
 
+'''
+I am getting something like 
+3G*1452592884*005F*UD2,130418,145006,V,32.180737,N,34.8552780
+'''
 def get_coordinates(data):
     result = False
+    re.match("\[3G.+,([0-9.]+),N,([0-9.]+),.+\]", data)
     
 def client_thread(clientsocket):
     chunks = []
