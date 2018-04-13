@@ -87,7 +87,7 @@ try:
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
     for (clientsocket, address), ct in clients.iteritems():
-        print("Close {1}".format(address))
+        print("Close {0}".format(address))
         close_socket(clientsocket, address)
         ct.exit()
     for (clientsocket, _), ct in clients.iteritems():
