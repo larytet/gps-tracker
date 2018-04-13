@@ -28,3 +28,11 @@ Looks like this:
     GPS:NO(0);
     GPRS:OK(100);
     pw:123456;
+
+Links
+
+*  https://www.gpswox.com/en/supported-gps-trackers/watch/jm09-q50-children-watch
+*  https://github.com/freshworkstudio/gps-tracking-nodejs/issues/17
+*  http://livegpstracks.com/forum/viewtopic.php?p=6483#p6483
+
+
