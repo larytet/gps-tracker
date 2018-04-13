@@ -22,7 +22,7 @@ clients = {}
 server_socket = open_server_socket()
 server_socket.listen(5)
 while True:
-    (clientsocket, address) = serversocket.accept()
+    (clientsocket, address) = server_socket.accept()
     ct = threading.Thread(target=client_thread, args=(clientsocket,))
     ct.run()
     clients[(clientsocket, address)] = ct
