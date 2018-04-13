@@ -19,6 +19,7 @@ def open_server_socket(port=4444):
     while True:
         try:
             s.bind((hostname, port))
+            break
         except:
             print("Failed to bind {0}:{1}".format(hostname, port))
             time.sleep(1.0)
