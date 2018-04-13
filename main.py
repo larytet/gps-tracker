@@ -61,7 +61,7 @@ server_socket = open_server_socket(port)
 print("Listen on port {0}".format(port))
 server_socket.listen(5)
 try:
-    accept_loop
+    accept_loop()
 except KeyboardInterrupt:
     for (clientsocket, _), ct in clients.iteritems():
         try:
