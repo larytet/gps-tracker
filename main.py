@@ -54,7 +54,7 @@ class Stopwatch():
     def elapsed_str(self):
         return "{0:.3f}".format(self.elapsed())
     
-def client_thread(clientsocket, address, stopwatch, thread_aborted):
+def client_thread(clientsocket, address, stopwatch):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
@@ -67,7 +67,7 @@ def client_thread(clientsocket, address, stopwatch, thread_aborted):
             print("{0}: {1} {2} {3}".format(stopwatch.elapsed_str(), id, c1, c2))
         else:
             print("{0}: Failed to parse {1}".format(stopwatch.elapsed_str(), data))
-        if thread_aborted[0]:
+        if address.thread_aborted:
             break
     #sys.exit()
     
@@ -84,7 +84,7 @@ def accept_loop():
         stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
         address.thread_aborted = False
-        ct = threading.Thread(target=client_thread, args=(clientsocket,address, stopwatch, thread_aborted))
+        ct = threading.Thread(target=client_thread, args=(clientsocket,address, stopwatch))
         
         ct.run()
         clients[(clientsocket, address, thread_aborted)] = ct
