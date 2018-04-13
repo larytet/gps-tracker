@@ -16,6 +16,7 @@ def client_thread(clientsocket):
     bytes_received = 0
     chunk = self.sock.recv(2048)
     print(chunk)
+    clientsocket.close()
     
 clients = {}
 
