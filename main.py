@@ -36,13 +36,13 @@ def get_coordinates(data):
 def client_thread(clientsocket):
     while True:
         data = clientsocket.recv(2048)
+        if data == "":
+            clientsocket.close()
+            break
         clientsocket.send("#")
         result, id, c1, c2 = get_coordinates(data)
         if result:
             print(id, c1, c2)
-        if data == "":
-            clientsocket.close()
-            break
     #sys.exit()
     
 clients = {}
