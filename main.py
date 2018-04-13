@@ -22,7 +22,9 @@ def get_coordinates(data):
     c1, c2 = None, None
 
     if result:
-        
+        c1 = m.group(1)
+        c2 = m.group(2)
+
     return result, c1, c2
     
 def client_thread(clientsocket):
