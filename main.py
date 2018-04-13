@@ -71,7 +71,7 @@ def client_thread(clientsocket, address, stopwatch):
         else:
             print("{0}: Failed to parse {1}".format(stopwatch.elapsed_str(), data))
         if stopwatch.thread_aborted:
-            print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), data))
+            print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), address))
             break
     #sys.exit()
     
