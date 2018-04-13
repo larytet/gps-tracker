@@ -29,7 +29,7 @@ def get_coordinates(data):
     if result:
         id = m.group(1)
         c1 = m.group(2)
-        c2 = m.group(4)
+        c2 = m.group(3)
     else:
         pass
     return result, id, c1, c2
