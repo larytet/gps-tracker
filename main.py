@@ -9,6 +9,7 @@ Create an INET, STREAMing socket
 def open_server_socket(port=4444):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((socket.gethostname(), port))
+    return s
 
 def client_thread(clientsocket):
     chunks = []
