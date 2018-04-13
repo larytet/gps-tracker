@@ -63,6 +63,7 @@ server_socket.listen(5)
 try:
     accept_loop()
 except KeyboardInterrupt:
+    print("I got Ctrl-C, exiting")
     for (clientsocket, _), ct in clients.iteritems():
         try:
             clientsocket.shutdown()
