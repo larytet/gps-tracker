@@ -4,6 +4,7 @@
 import socket
 import re
 import threading
+import sys
 
 '''
 Create an INET, STREAMing socket
@@ -41,7 +42,7 @@ def client_thread(clientsocket):
     if result:
         print(id, c1, c2)
     clientsocket.close()
-    exit()
+    sys.exit()
     
 clients = {}
 
