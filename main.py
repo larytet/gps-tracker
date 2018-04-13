@@ -74,8 +74,6 @@ def client_thread(clientsocket, address, stopwatch):
     
 clients = {}
 
-ClientThreadParams = collections.namedtuple('ClientThreadParams', 'socket address aborted')
-
 def accept_loop():
     while True:
         try:
@@ -86,7 +84,7 @@ def accept_loop():
         
         stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
-        address.thread_aborted = False
+        stopwatch.thread_aborted = False
         ct = threading.Thread(target=client_thread, args=(clientsocket, address, stopwatch))
         
         ct.run()
