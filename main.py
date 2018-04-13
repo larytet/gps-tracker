@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import socket
+import re
 
 '''
 Create an INET, STREAMing socket
@@ -11,12 +12,16 @@ def open_server_socket(port=4444):
     s.bind((socket.gethostname(), port))
     return s
 
+def get_coordinates(data):
+    result = False
+    
 def client_thread(clientsocket):
     chunks = []
     bytes_received = 0
-    chunk = clientsocket.recv(2048)
+    data = clientsocket.recv(2048)
     clientsocket.send("#")
-    print(chunk)
+    result, id, coordinates = get_coordinates(data)
+    print(id, coordinates)
     clientsocket.close()
     
 clients = {}
