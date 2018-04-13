@@ -20,12 +20,13 @@ def get_coordinates(data):
     m = re.match("\[3G.+,([0-9.]+),N,([0-9.]+),.+\]", data)
 
     result = (m != None)
-    c1, c2 = None, None
+    id, c1, c2 = None, None, None
     if result:
-        c1 = m.group(1)
-        c2 = m.group(2)
+        id = m.group(1)
+        c1 = m.group(2)
+        c2 = m.group(4)
 
-    return result, c1, c2
+    return result, id, c1, c2
     
 def client_thread(clientsocket):
     chunks = []
@@ -33,7 +34,8 @@ def client_thread(clientsocket):
     data = clientsocket.recv(2048)
     clientsocket.send("#")
     result, id, coordinates = get_coordinates(data)
-    print(id, coordinates)
+    if result:
+        print(id, coordinates)
     clientsocket.close()
     
 clients = {}
