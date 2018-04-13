@@ -54,7 +54,7 @@ def client_thread(clientsocket, address, start_time):
         clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
-            print(id, c1, c2)
+            print("{0}: {1} {2} {3}".format(timeit.default_timer()-start_time, id, c1, c2))
     #sys.exit()
     
 clients = {}
