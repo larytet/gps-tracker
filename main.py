@@ -70,7 +70,7 @@ clients = {}
 def accept_loop():
     while True:
         (clientsocket, address) = server_socket.accept()
-        start_time = timeit.default_timer()
+        stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
         ct = threading.Thread(target=client_thread, args=(clientsocket,address, start_time))
         ct.run()
