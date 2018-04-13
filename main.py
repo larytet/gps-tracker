@@ -50,6 +50,8 @@ def close_socket(clientsocket, address):
 class Stopwatch():
     def __init__(self):
         self.start = timeit.default_timer()
+        self.thread_aborted = False
+
     def elapsed(self):
         return timeit.default_timer()-self.start
     def elapsed_str(self):
