@@ -66,8 +66,7 @@ def client_thread(clientsocket, address, stopwatch):
             if stopwatch.thread_aborted:
                 print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), address))
                 break
-        if data != ""
-            packets += 1
+        packets += 1
         clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
