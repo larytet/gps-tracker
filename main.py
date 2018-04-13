@@ -5,6 +5,7 @@ import socket
 import re
 import threading
 import sys
+import timeit
 
 '''
 Create an INET, STREAMing socket
