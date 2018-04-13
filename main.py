@@ -19,7 +19,9 @@ def client_thread(clientsocket):
     
 clients = {}
 
-server_socket = open_server_socket()
+port = 4444
+server_socket = open_server_socket(port)
+print("Listen on port ", port)
 server_socket.listen(5)
 while True:
     (clientsocket, address) = server_socket.accept()
