@@ -50,7 +50,7 @@ class Stopwatch():
     def elapsed(self):
         return timeit.default_timer()-self.start
     
-def client_thread(clientsocket, address, start_time):
+def client_thread(clientsocket, address, stopwatch):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
@@ -70,9 +70,9 @@ clients = {}
 def accept_loop():
     while True:
         (clientsocket, address) = server_socket.accept()
-        stopwatch = new Stopwatch()
+        stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
-        ct = threading.Thread(target=client_thread, args=(clientsocket,address, start_time))
+        ct = threading.Thread(target=client_thread, args=(clientsocket,address, stopwatch))
         ct.run()
         clients[(clientsocket, address)] = ct
 
