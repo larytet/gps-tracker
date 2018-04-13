@@ -74,6 +74,8 @@ def client_thread(clientsocket, address, stopwatch):
     
 clients = {}
 
+ClientThreadParams = collections.namedtuple('ClientThreadParams', 'socket address aborted')
+
 def accept_loop():
     while True:
         try:
