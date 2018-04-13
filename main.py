@@ -27,6 +27,8 @@ def get_coordinates(data):
         id = m.group(1)
         c1 = m.group(2)
         c2 = m.group(4)
+    else:
+        print("Failed to parse '{}'".format(data))
 
     return result, id, c1, c2
     
