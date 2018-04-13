@@ -21,11 +21,11 @@ clients = {}
 
 port = 4444
 server_socket = open_server_socket(port)
-print("Listen on port {0}".port)
+print("Listen on port {0}".format(port))
 server_socket.listen(5)
 while True:
     (clientsocket, address) = server_socket.accept()
-    print("Accepted connection from ", clientsocket, address)
+    print("Accepted connection from {0} {1}".format(clientsocket, address))
     ct = threading.Thread(target=client_thread, args=(clientsocket,))
     ct.run()
     clients[(clientsocket, address)] = ct
