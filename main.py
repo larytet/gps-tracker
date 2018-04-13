@@ -33,12 +33,23 @@ def get_coordinates(data):
         print("Failed to parse '{}'".format(data))
     return result, id, c1, c2
     
+def close_socket(clientsocket):
+    print("Close {0}".format(address))
+    try:
+        clientsocket.shutdown()
+    except:
+        pass
+    try:
+        clientsocket.close()
+    except:
+        pass
+    
 def client_thread(clientsocket, address):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
-            print("Close {0}".format(address))
-            clientsocket.shutdown()
+            try:
+                clientsocket.shutdown()
             clientsocket.close()
             break
         clientsocket.send("[OK]\n")
@@ -66,14 +77,6 @@ try:
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
     for (clientsocket, _), ct in clients.iteritems():
-        try:
-            clientsocket.shutdown()
-        except:
-            pass
-        try:
-            clientsocket.close()
-        except:
-            pass
         ct.exit()
     for (clientsocket, _), ct in clients.iteritems():
         ct.join()
