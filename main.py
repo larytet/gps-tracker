@@ -71,7 +71,7 @@ def client_thread(clientsocket, address, stopwatch):
         if result:
             print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), id, c1, c2, address))
         else:
-            print("{0}: Failed to parse {1} from {2}".format(stopwatch.elapsed_str(), data, address))
+            print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
         break
 
     print("{0}: close {1}".format(stopwatch.elapsed_str(), address))
