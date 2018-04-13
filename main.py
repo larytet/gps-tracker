@@ -71,4 +71,5 @@ except KeyboardInterrupt:
         except:
             pass
         ct.exit()
+    for (clientsocket, _), ct in clients.iteritems():
         ct.join()
