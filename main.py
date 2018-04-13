@@ -39,7 +39,7 @@ def client_thread(clientsocket):
         if data == "":
             clientsocket.close()
             break
-        clientsocket.send("#")
+        clientsocket.send("\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
             print(id, c1, c2)
