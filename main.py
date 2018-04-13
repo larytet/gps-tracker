@@ -33,10 +33,11 @@ def get_coordinates(data):
         print("Failed to parse '{}'".format(data))
     return result, id, c1, c2
     
-def client_thread(clientsocket):
+def client_thread(clientsocket, address):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
+            print("Close {0}".format(address))
             clientsocket.shutdown()
             clientsocket.close()
             break
@@ -52,7 +53,7 @@ def accept_loop():
     while True:
         (clientsocket, address) = server_socket.accept()
         print("Accepted connection from {0}".format(address))
-        ct = threading.Thread(target=client_thread, args=(clientsocket,))
+        ct = threading.Thread(target=client_thread, args=(clientsocket,address))
         ct.run()
         clients[(clientsocket, address)] = ct
 
