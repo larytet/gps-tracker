@@ -68,6 +68,9 @@ except KeyboardInterrupt:
     for (clientsocket, _), ct in clients.iteritems():
         try:
             clientsocket.shutdown()
+        except:
+            pass
+        try:
             clientsocket.close()
         except:
             pass
