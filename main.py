@@ -92,8 +92,9 @@ try:
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
     for (clientsocket, address), ct in clients.iteritems():
+        clientsocket.thread_aborted = True
         print("Close {0}".format(address))
         close_socket(clientsocket, address)
-        ct.exit()
+        #ct.exit()
     for (clientsocket, _), ct in clients.iteritems():
         ct.join()
