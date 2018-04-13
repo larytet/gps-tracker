@@ -40,7 +40,9 @@ def client_thread(clientsocket):
         result, id, c1, c2 = get_coordinates(data)
         if result:
             print(id, c1, c2)
-    clientsocket.close()
+        if data == ""
+            clientsocket.close()
+            break
     #sys.exit()
     
 clients = {}
