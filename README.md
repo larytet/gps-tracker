@@ -5,6 +5,12 @@ Q80, Q90, GW100, GW100S, GW200, GW200S, GW300, GW500S,
 GW600S, GW700, GW800, GW900, GW900S, GW1000, EW100, K911, 
 Titan Watch Q50
 
+Reponse to the command:
+
+    pw,123456,ts#
+    
+Looks like this:
+
     ver:G36_V4.0_DSPRLCD0_2015.08.15_18.40.57;
     ID:1452592xx;
     imei:359614xxxxxxxxx;
