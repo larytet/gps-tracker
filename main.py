@@ -35,7 +35,6 @@ def get_coordinates(data):
     return result, id, c1, c2
     
 def close_socket(clientsocket, address):
-    print("Close {0}".format(address))
     try:
         clientsocket.shutdown()
     except:
@@ -49,6 +48,7 @@ def client_thread(clientsocket, address, start_time):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
+            print("{0}: close {1}".format(timeit.default_timer()-start_time  ,address))
             close_socket(clientsocket, address)
             break
         clientsocket.send("[OK]\n")
