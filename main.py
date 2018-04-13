@@ -19,9 +19,11 @@ I am getting something like
 def get_coordinates(data):
     m = re.match("\[3G.+,([0-9.]+),N,([0-9.]+),.+\]", data)
     result = m != None
-    if not m:
-        return result, None, None
-    return True
+    c1, c2 = None, None
+
+    if result:
+        
+    return result, c1, c2
     
 def client_thread(clientsocket):
     chunks = []
