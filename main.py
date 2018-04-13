@@ -91,7 +91,7 @@ def accept_loop():
         ct = threading.Thread(target=client_thread, args=(clientsocket, address, stopwatch))
         
         ct.run()
-        clients[(clientsocket, address)] = ct
+        clients[(clientsocket, address, stopwatch)] = ct
 
 port = 4444
 server_socket = open_server_socket(port)
