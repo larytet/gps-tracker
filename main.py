@@ -15,6 +15,7 @@ def client_thread(clientsocket):
     chunks = []
     bytes_received = 0
     chunk = clientsocket.recv(2048)
+    clientsocket.send("#")
     print(chunk)
     clientsocket.close()
     
