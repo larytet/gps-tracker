@@ -21,6 +21,7 @@ def open_server_socket(port=4444):
             s.bind((hostname, port))
         except:
             print("Failed to bind {0}:{1}".format(hostname, port))
+            time.sleep(1.0)
     print("Bound {0}:{1}".format(hostname, port))
     return s
 
