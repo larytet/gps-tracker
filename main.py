@@ -34,13 +34,12 @@ def get_coordinates(data):
     return result, id, c1, c2
     
 def client_thread(clientsocket):
-    chunks = []
-    bytes_received = 0
-    data = clientsocket.recv(2048)
-    clientsocket.send("#")
-    result, id, c1, c2 = get_coordinates(data)
-    if result:
-        print(id, c1, c2)
+    while True:
+        data = clientsocket.recv(2048)
+        clientsocket.send("#")
+        result, id, c1, c2 = get_coordinates(data)
+        if result:
+            print(id, c1, c2)
     clientsocket.close()
     #sys.exit()
     
