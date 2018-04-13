@@ -68,7 +68,7 @@ def client_thread(clientsocket, address, stopwatch):
             print("{0}: {1} {2} {3}".format(stopwatch.elapsed_str(), id, c1, c2))
         else:
             print("{0}: Failed to parse {1}".format(stopwatch.elapsed_str(), data))
-        if address.thread_aborted:
+        if stopwatch.thread_aborted:
             break
     #sys.exit()
     
@@ -99,7 +99,7 @@ try:
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
     for (clientsocket, address), ct in clients.iteritems():
-        address.thread_aborted = True
+        stopwatch.thread_aborted = True
         print("Close {0}".format(address))
         close_socket(clientsocket, address)
 
