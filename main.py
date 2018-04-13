@@ -14,7 +14,7 @@ def open_server_socket(port=4444):
 def client_thread(clientsocket):
     chunks = []
     bytes_received = 0
-    chunk = self.sock.recv(2048)
+    chunk = clientsocket.recv(2048)
     print(chunk)
     clientsocket.close()
     
