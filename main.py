@@ -37,6 +37,7 @@ def client_thread(clientsocket):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
+            clientsocket.shutdown()
             clientsocket.close()
             break
         clientsocket.send("[OK]\n")
@@ -47,13 +48,21 @@ def client_thread(clientsocket):
     
 clients = {}
 
+def accept_loop():
+    while True:
+        (clientsocket, address) = server_socket.accept()
+        print("Accepted connection from {0}".format(address))
+        ct = threading.Thread(target=client_thread, args=(clientsocket,))
+        ct.run()
+        clients[(clientsocket, address)] = ct
+
 port = 4444
 server_socket = open_server_socket(port)
 print("Listen on port {0}".format(port))
 server_socket.listen(5)
-while True:
-    (clientsocket, address) = server_socket.accept()
-    print("Accepted connection from {0}".format(address))
-    ct = threading.Thread(target=client_thread, args=(clientsocket,))
-    ct.run()
-    clients[(clientsocket, address)] = ct
+try:
+    accept_loop
+except KeyboardInterrupt:
+    for (clientsocket, _) in clients:
+        
+        clientsocket.close()
