@@ -69,4 +69,6 @@ except KeyboardInterrupt:
             clientsocket.close()
         except:
             pass
+        ct.exit()
+        ct.join()
         
