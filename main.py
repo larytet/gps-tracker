@@ -18,9 +18,9 @@ I am getting something like
 '''
 def get_coordinates(data):
     m = re.match("\[3G.+,([0-9.]+),N,([0-9.]+),.+\]", data)
+
     result = (m != None)
     c1, c2 = None, None
-
     if result:
         c1 = m.group(1)
         c2 = m.group(2)
