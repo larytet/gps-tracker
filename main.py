@@ -66,6 +66,8 @@ def client_thread(clientsocket, address, stopwatch):
             print("{0}: {1} {2} {3}".format(stopwatch.elapsed_str(), id, c1, c2))
         else:
             print("{0}: Failed to parse {1}".format(stopwatch.elapsed_str(), data))
+        if clientsocket.thread_aborted:
+            break
     #sys.exit()
     
 clients = {}
@@ -76,6 +78,8 @@ def accept_loop():
         stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
         ct = threading.Thread(target=client_thread, args=(clientsocket,address, stopwatch))
+        clientsocket.thread_aborted = False
+        
         ct.run()
         clients[(clientsocket, address)] = ct
 
