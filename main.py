@@ -14,7 +14,7 @@ Create an INET, STREAMing socket
 '''
 def open_server_socket(port=4444):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(1.0)
+    s.settimeout(2.0)
     hostname = "0.0.0.0"  #socket.gethostname()
     s.bind((hostname, port))
     print("Bound {0}:{1}".format(hostname, port))
@@ -59,10 +59,14 @@ class Stopwatch():
     
 def client_thread(clientsocket, address, stopwatch):
     while True:
-        data = clientsocket.recv(2048)
+        try:
+            data = clientsocket.recv(2048)
+        except:
+            if stopwatch.thread_aborted:
+                print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), address))
+                break
+            continue
         if data == "":
-            print("{0}: close {1}".format(stopwatch.elapsed_str(), address))
-            close_socket(clientsocket, address)
             break
         clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
@@ -70,10 +74,10 @@ def client_thread(clientsocket, address, stopwatch):
             print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), id, c1, c2, address))
         else:
             print("{0}: Failed to parse {1} from {2}".format(stopwatch.elapsed_str(), data, address))
-        if stopwatch.thread_aborted:
-            close_socket(clientsocket, address)
-            print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), address))
-            break
+        break
+
+    print("{0}: close {1}".format(stopwatch.elapsed_str(), address))
+    close_socket(clientsocket, address)
     #sys.exit()
     
 clients = {}
