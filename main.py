@@ -42,7 +42,7 @@ def client_thread(clientsocket):
     if result:
         print(id, c1, c2)
     clientsocket.close()
-    sys.exit()
+    #sys.exit()
     
 clients = {}
 
