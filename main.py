@@ -67,7 +67,7 @@ def client_thread(clientsocket, address, stopwatch):
         clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
-            print("{0}: {1} {2} {3} {4}".format(stopwatch.elapsed_str(), address, id, c1, c2))
+            print("{0}: {1} {2} {3} {4}".format(stopwatch.elapsed_str(), id, c1, c2, address))
         else:
             print("{0}: Failed to parse {1} from {2}".format(stopwatch.elapsed_str(), data, address))
         if stopwatch.thread_aborted:
