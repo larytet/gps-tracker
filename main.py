@@ -49,6 +49,8 @@ class Stopwatch():
         self.start = timeit.default_timer()
     def elapsed(self):
         return timeit.default_timer()-self.start
+    def elapsed_str(self):
+        return "{0:.3f}".format(self.elapsed())
     
 def client_thread(clientsocket, address, stopwatch):
     while True:
