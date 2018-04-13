@@ -95,6 +95,5 @@ except KeyboardInterrupt:
         clientsocket.thread_aborted = True
         print("Close {0}".format(address))
         close_socket(clientsocket, address)
-        #ct.exit()
     for (clientsocket, _), ct in clients.iteritems():
         ct.join()
