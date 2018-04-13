@@ -29,7 +29,6 @@ def get_coordinates(data):
         c2 = m.group(4)
     else:
         print("Failed to parse '{}'".format(data))
-
     return result, id, c1, c2
     
 def client_thread(clientsocket):
