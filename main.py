@@ -45,7 +45,7 @@ def close_socket(clientsocket, address):
     except:
         pass
     
-def client_thread(clientsocket, address):
+def client_thread(clientsocket, address, start_time):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
