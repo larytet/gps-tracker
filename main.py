@@ -56,7 +56,7 @@ def client_thread(clientsocket, address, stopwatch):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
-            print("{0}: close {1}".format(stopwatch.elapsed(), address))
+            print("{0}: close {1}".format(stopwatch.elapsed_str(), address))
             close_socket(clientsocket, address)
             break
         clientsocket.send("[OK]\n")
@@ -64,7 +64,7 @@ def client_thread(clientsocket, address, stopwatch):
         if result:
             print("{0}: {1} {2} {3}".format(stopwatch.elapsed(), id, c1, c2))
         else:
-            print("{0}: Failed to parse {1}".format(stopwatch.elapsed(), data))
+            print("{0}: Failed to parse {1}".format(stopwatch.elapsed_str(), data))
     #sys.exit()
     
 clients = {}
