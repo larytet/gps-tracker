@@ -48,9 +48,7 @@ def client_thread(clientsocket, address):
     while True:
         data = clientsocket.recv(2048)
         if data == "":
-            try:
-                clientsocket.shutdown()
-            clientsocket.close()
+            close_socket(clientsocket)
             break
         clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
@@ -77,6 +75,7 @@ try:
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
     for (clientsocket, _), ct in clients.iteritems():
+        close_socket(clientsocket)
         ct.exit()
     for (clientsocket, _), ct in clients.iteritems():
         ct.join()
