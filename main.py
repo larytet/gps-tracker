@@ -6,6 +6,7 @@ import re
 import threading
 import sys
 import timeit
+from time import sleep
 
 '''
 Create an INET, STREAMing socket
@@ -77,6 +78,7 @@ def accept_loop():
         try:
             (clientsocket, address) = server_socket.accept()
         except:
+            time.sleep(0.1)
             continue
         
         stopwatch = Stopwatch()
