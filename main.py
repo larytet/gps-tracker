@@ -63,6 +63,10 @@ server_socket.listen(5)
 try:
     accept_loop
 except KeyboardInterrupt:
-    for (clientsocket, _) in clients:
+    for (clientsocket, _), ct in clients.iteritems():
+        try:
+            clientsocket.shutdown()
+            clientsocket.close()
+        except:
+            pass
         
-        clientsocket.close()
