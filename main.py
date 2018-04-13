@@ -31,7 +31,7 @@ def get_coordinates(data):
         c1 = m.group(2)
         c2 = m.group(4)
     else:
-        print("Failed to parse '{}'".format(data))
+        pass
     return result, id, c1, c2
     
 def close_socket(clientsocket, address):
@@ -55,6 +55,8 @@ def client_thread(clientsocket, address, start_time):
         result, id, c1, c2 = get_coordinates(data)
         if result:
             print("{0}: {1} {2} {3}".format(timeit.default_timer()-start_time, id, c1, c2))
+        else:
+            print("{0}: Failed to parse {1}".format(timeit.default_timer()-start_time, data))
     #sys.exit()
     
 clients = {}
