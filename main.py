@@ -67,7 +67,7 @@ def client_thread(clientsocket, address, stopwatch):
                 break
             # probably timeout 
             continue
-        clientsocket.send("[OK]\n")
+        #clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
             print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), id, c1, c2, address))
