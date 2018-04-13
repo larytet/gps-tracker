@@ -9,7 +9,7 @@ Create an INET, STREAMing socket
 '''
 def open_server_socket(port=4444):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    hostname = socket.gethostname()
+    hostname = "127.0.0.1"#socket.gethostname()
     s.bind((hostname, port))
     print("Bound {0}:{1}".format(hostname, port))
     return s
