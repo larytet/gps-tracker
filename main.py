@@ -101,7 +101,7 @@ try:
     accept_loop()
 except KeyboardInterrupt:
     print("I got Ctrl-C, exiting")
-    for (clientsocket, address), ct in clients.iteritems():
+    for (clientsocket, address, stopwatch), ct in clients.iteritems():
         stopwatch.thread_aborted = True
     for (clientsocket, _), ct in clients.iteritems():
         ct.join()
