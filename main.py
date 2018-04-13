@@ -35,7 +35,7 @@ def client_thread(clientsocket):
     clientsocket.send("#")
     result, id, c1, c2 = get_coordinates(data)
     if result:
-        print(id, coordinates)
+        print(id, c1, c2)
     clientsocket.close()
     
 clients = {}
