@@ -33,7 +33,7 @@ def client_thread(clientsocket):
     bytes_received = 0
     data = clientsocket.recv(2048)
     clientsocket.send("#")
-    result, id, coordinates = get_coordinates(data)
+    result, id, c1, c2 = get_coordinates(data)
     if result:
         print(id, coordinates)
     clientsocket.close()
