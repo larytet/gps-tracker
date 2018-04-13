@@ -43,6 +43,12 @@ def close_socket(clientsocket, address):
         clientsocket.close()
     except:
         pass
+
+class Stopwatch():
+    def __init__(self):
+        self.start = timeit.default_timer()
+    def elapsed(self):
+        return timeit.default_timer()-self.start
     
 def client_thread(clientsocket, address, start_time):
     while True:
