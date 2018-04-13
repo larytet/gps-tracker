@@ -41,6 +41,7 @@ def client_thread(clientsocket):
     if result:
         print(id, c1, c2)
     clientsocket.close()
+    exit()
     
 clients = {}
 
