@@ -28,7 +28,11 @@ def open_server_socket(port=4444):
     print("Bound {0}:{1}".format(hostname, port))
     return s
 
-PARSING_RESULTS = {0:"Ok", 1:""}
+class ParsingResult(Enum):
+    Ok = 1
+    Prompt = 2
+    Failed = 3
+
 '''
 I am getting something like 
 [3G*1452592884*005F*UD2,130418,145006,V,32.180737,N,34.8552780,65,55,5]
