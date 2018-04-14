@@ -14,9 +14,11 @@ Titan Watch Q50
 * Run the script using something like
  
     python main.py
+    
 * Configure the url in the tracker device
  
     pw,123456,YOUR-IP-ADDRESS-HERE,4444# 
+
 
 Reponse to the command:
 
