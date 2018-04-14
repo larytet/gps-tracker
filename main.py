@@ -123,3 +123,5 @@ except KeyboardInterrupt:
     for (clientsocket, _), (ct, _) in clients.iteritems():
         if ct.isAlive():
             ct.join()
+    for (clientsocket, address) in clients():
+        close_socket(clientsocket, address)
