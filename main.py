@@ -41,7 +41,6 @@ def get_coordinates(data):
     pattern_prompt = "\[3G.([0-9]+)*.+,0,0,[0-9]+\]"
     pattern_coordinates = "\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
     m_coordinates = re.match(pattern_coordinates, data)
-    m_prompt = re.match(pattern_prompt, data)
 
     result = (m_coordinates != None)
     id, c1, c2 = None, None, None
@@ -50,6 +49,7 @@ def get_coordinates(data):
         c1 = m_coordinates.group(2)
         c2 = m_coordinates.group(3)
     else:
+        m_prompt = re.match(pattern_prompt, data)
         pass
     return result, id, c1, c2
     
