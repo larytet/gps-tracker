@@ -53,7 +53,7 @@ def get_coordinates(data):
         m_prompt = re.match(pattern_prompt, data)
         if m_prompt:
             result = ParsingResult.Prompt
-        pass
+
     return result, id, c1, c2
     
 def get_coordinates_url(c1, c2):
