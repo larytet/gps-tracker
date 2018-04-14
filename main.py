@@ -127,9 +127,9 @@ def accept_loop():
         stopwatch = Stopwatch()
         print("Accepted connection from {0}".format(address))
         ct = threading.Thread(target=client_thread, args=(clientsocket, address, stopwatch))
+        clients[(clientsocket, address)] = (ct, stopwatch)
         
         ct.run()
-        clients[(clientsocket, address)] = (ct, stopwatch)
 
 port = 4444
 server_socket = open_server_socket(port)
