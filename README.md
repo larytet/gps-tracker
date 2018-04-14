@@ -5,6 +5,19 @@ Q80, Q90, GW100, GW100S, GW200, GW200S, GW300, GW500S,
 GW600S, GW700, GW800, GW900, GW900S, GW1000, EW100, K911, 
 Titan Watch Q50
 
+
+# How to use
+
+
+* Figure out your PC external IP address - https://whatismyipaddress.com/
+* Open port 4444 in your router NAT
+* Run the script using something like
+ 
+    python main.py
+* Configure the url in the tracker device
+ 
+    pw,123456,YOUR-IP-ADDRESS-HERE,4444# 
+
 Reponse to the command:
 
     pw,123456,ts#
