@@ -44,12 +44,14 @@ def get_coordinates(data):
 
     result = ParsingResult.Failed
     id, c1, c2 = None, None, None
-    if result:
+    if m_coordinates:
         id = m_coordinates.group(1)
         c1 = m_coordinates.group(2)
         c2 = m_coordinates.group(3)
+        result = ParsingResult.Ok
     else:
         m_prompt = re.match(pattern_prompt, data)
+        if 
         pass
     return result, id, c1, c2
     
