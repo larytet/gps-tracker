@@ -98,6 +98,7 @@ def client_thread(clientsocket, address, stopwatch):
             break
         elif result == ParsingResult.Failed:
             print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
+
         if data == "":
             break
 
