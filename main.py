@@ -53,6 +53,7 @@ def get_coordinates(data):
         c2 = m_coordinates.group(3)
     elif m_prompt:
         result = ParsingResult.Prompt
+        id = m_prompt.group(1)
     elif data == "":
         result = ParsingResult.Empty
 
