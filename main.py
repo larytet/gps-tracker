@@ -103,7 +103,7 @@ def client_thread(clientsocket, address, stopwatch):
             print("{0}: {1} {2} from {3}".format(str(timestamp), id, url, address))
             break
         elif result == ParsingResult.Prompt:
-            print("{0}: Heart beat {1} {2} from {3}".format(stopwatch.elapsed_str(), str(timestamp), id, address))
+            print("{0}: Heart beat {1} from {2}".format(str(timestamp), id, address))
         elif result == ParsingResult.Failed:
             print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
 
