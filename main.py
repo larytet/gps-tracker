@@ -40,7 +40,8 @@ I am getting something like
 def get_coordinates(data):
     pattern_prompt = "\[3G.([0-9]+)*.+,0,0,[0-9]+\]"
     pattern_coordinates = "\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
-    m = re.match(pattern_coordinates, data)
+    m_coordinates = re.match(pattern_coordinates, data)
+    m_prompt = re.match(pattern_prompt, data)
 
     result = (m != None)
     id, c1, c2 = None, None, None
