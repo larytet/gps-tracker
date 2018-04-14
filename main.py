@@ -110,7 +110,7 @@ def client_thread(clientsocket, address, stopwatch):
         if result == ParsingResult.Empty:
             break
 
-    print("{0}: close {1}".format(stopwatch.elapsed_str(), address))
+    print("{0}: close {1}".format(str(datetime.datetime.now()), address))
     close_socket(clientsocket, address)
     #sys.exit()
     
