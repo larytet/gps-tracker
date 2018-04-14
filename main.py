@@ -91,7 +91,7 @@ def client_thread(clientsocket, address, stopwatch):
         timestamp = datetime.datetime.now()
         try:
             result, id, c1, c2 = get_coordinates(data)
-        except Exception exc:
+        except Exception, exc:
             print exc
         if result == ParsingResult.Ok:
             url = get_coordinates_url(c1, c2)
