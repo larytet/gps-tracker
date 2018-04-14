@@ -7,6 +7,7 @@ import threading
 import sys
 import timeit
 import time
+import datetime
 import collections
 
 '''
@@ -80,7 +81,7 @@ def client_thread(clientsocket, address, stopwatch):
         result, id, c1, c2 = get_coordinates(data)
         if result:
             url = get_coordinates_url(c1, c2)
-            print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), stopwatch.start, id, url, address))
+            print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), time., id, url, address))
             break
         else:
             print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
