@@ -119,7 +119,7 @@ clients = {}
 def accept_loop():
     while True:
         try:
-            (clientsocket, address) = server_socket.accept(5)
+            (clientsocket, address) = server_socket.accept()
         except socket.timeout:
             time.sleep(0.1)
             continue
