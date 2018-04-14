@@ -46,10 +46,10 @@ def get_coordinates(data):
     result = ParsingResult.Failed
     id, c1, c2 = None, None, None
     if m_coordinates:
+        result = ParsingResult.Ok
         id = m_coordinates.group(1)
         c1 = m_coordinates.group(2)
         c2 = m_coordinates.group(3)
-        result = ParsingResult.Ok
     elif m_prompt:
             result = ParsingResult.Prompt
 
