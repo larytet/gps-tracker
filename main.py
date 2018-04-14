@@ -28,7 +28,7 @@ def open_server_socket(port=4444):
     print("Bound {0}:{1}".format(hostname, port))
     return s
 
-class ParsingResult(Enum):
+class ParsingResult(enum.Enum):
     Ok = 0
     Prompt = 1
     Failed = 2
