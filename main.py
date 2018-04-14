@@ -42,7 +42,7 @@ def get_coordinates(data):
     pattern_coordinates = "\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
     m_coordinates = re.match(pattern_coordinates, data)
 
-    result = (m_coordinates != None)
+    result = ParsingResult.Failed
     id, c1, c2 = None, None, None
     if result:
         id = m_coordinates.group(1)
