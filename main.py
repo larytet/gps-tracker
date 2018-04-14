@@ -94,18 +94,19 @@ def client_thread(clientsocket, address, stopwatch):
             time.sleep(0.1) 
             continue
         timestamp = datetime.datetime.now()
+        timestamp_str = str(timestamp)
         try:
             result, id, c1, c2 = get_coordinates(data)
         except Exception, exc:
             print exc
         if result == ParsingResult.Ok:
             url = get_coordinates_url(c1, c2)
-            print("{0}: {1} {2} from {3}".format(str(timestamp), id, url, address))
+            print("{0}: {1} {2} from {3}".format(timestamp_str, id, url, address))
             break
         elif result == ParsingResult.Prompt:
-            print("{0}: Heart beat {1} from {2}".format(str(timestamp), id, address))
+            print("{0}: Heart beat {1} from {2}".format(timestamp_str, id, address))
         elif result == ParsingResult.Failed:
-            print("{0}: Failed to parse '{1}' from {2}".format(str(timestamp), data, address))
+            print("{0}: Failed to parse '{1}' from {2}".format(timestamp_str, data, address))
 
         if result == ParsingResult.Empty:
             break
