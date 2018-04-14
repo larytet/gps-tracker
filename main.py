@@ -43,6 +43,9 @@ def get_coordinates(data):
         pass
     return result, id, c1, c2
     
+def get_coordinates_url(c1, c2):
+    return "http://maps.google.com/maps?q=n{0},e{1}".format(c1, c2)
+
 def close_socket(clientsocket, address):
     try:
         clientsocket.shutdown()
@@ -76,7 +79,8 @@ def client_thread(clientsocket, address, stopwatch):
         #clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
         if result:
-            print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), id, c1, c2, address))
+            url = get_coordinates_url(c1, c2)
+            print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), stopwatch.start, id, url, address))
             break
         else:
             print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
