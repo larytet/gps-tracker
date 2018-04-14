@@ -32,6 +32,7 @@ class ParsingResult(enum.Enum):
     Ok = 0
     Prompt = 1
     Failed = 2
+    Empty = 3
 
 '''
 I am getting something like 
