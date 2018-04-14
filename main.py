@@ -43,12 +43,12 @@ def get_coordinates(data):
     m_coordinates = re.match(pattern_coordinates, data)
     m_prompt = re.match(pattern_prompt, data)
 
-    result = (m != None)
+    result = (m_coordinates != None)
     id, c1, c2 = None, None, None
     if result:
-        id = m.group(1)
-        c1 = m.group(2)
-        c2 = m.group(3)
+        id = m_coordinates.group(1)
+        c1 = m_coordinates.group(2)
+        c2 = m_coordinates.group(3)
     else:
         pass
     return result, id, c1, c2
