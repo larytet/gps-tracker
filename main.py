@@ -92,7 +92,7 @@ def client_thread(clientsocket, address, stopwatch):
         timestamp = datetime.datetime.now()
         #clientsocket.send("[OK]\n")
         result, id, c1, c2 = get_coordinates(data)
-        if result:
+        if result == ParsingResult.Ok:
             url = get_coordinates_url(c1, c2)
             print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), str(timestamp), id, url, address))
             break
