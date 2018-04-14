@@ -98,7 +98,7 @@ def client_thread(clientsocket, address, stopwatch):
             url = get_coordinates_url(c1, c2)
             print("{0}: {1} {2} {3} from {4}".format(stopwatch.elapsed_str(), str(timestamp), id, url, address))
             break
-        elif result == ParsingResult.Failed:
+        elif result == ParsingResult.Failed and data != "":
             print("{0}: Failed to parse '{1}' from {2}".format(stopwatch.elapsed_str(), data, address))
 
         if data == "":
