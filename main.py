@@ -124,7 +124,7 @@ def accept_loop():
         except socket.timeout:
             time.sleep(0.1)
             continue
-        
+        # TODO replace by selecr
         print("Accepted connection from {0}".format(address))
         stopwatch = Stopwatch()
         ct = threading.Thread(target=client_thread, args=(clientsocket, address, stopwatch))
