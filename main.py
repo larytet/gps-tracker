@@ -29,9 +29,9 @@ def open_server_socket(port=4444):
     return s
 
 class ParsingResult(Enum):
-    Ok = 1
-    Prompt = 2
-    Failed = 3
+    Ok = 0
+    Prompt = 1
+    Failed = 2
 
 '''
 I am getting something like 
