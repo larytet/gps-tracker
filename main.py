@@ -86,7 +86,8 @@ def client_thread(clientsocket, address, stopwatch):
             if stopwatch.thread_aborted:
                 print("{0}: Aborting thread {1}".format(stopwatch.elapsed_str(), address))
                 break
-            # probably timeout 
+            # probably timeout
+            time.sleep(0.1) 
             continue
         timestamp = datetime.datetime.now()
         try:
