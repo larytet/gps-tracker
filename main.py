@@ -51,7 +51,8 @@ def get_coordinates(data):
         result = ParsingResult.Ok
     else:
         m_prompt = re.match(pattern_prompt, data)
-        if 
+        if m_prompt:
+            result = ParsingResult.Prompt
         pass
     return result, id, c1, c2
     
