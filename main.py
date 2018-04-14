@@ -38,7 +38,9 @@ I am getting something like
 [3G*1452592884*005F*UD2,130418,145006,V,32.180737,N,34.8552780,65,55,5]
 '''
 def get_coordinates(data):
-    m = re.match("\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]", data)
+    pattern_prompt = "\[[3G*([0-9]+)*.+*LK,0,0,100]]"
+    pattern_coordinates = "\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
+    m = re.match(pattern_coordinates, data)
 
     result = (m != None)
     id, c1, c2 = None, None, None
