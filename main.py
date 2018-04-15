@@ -102,14 +102,19 @@ def client_thread(clientsocket, address, stopwatch):
     while True:
         try:
             data = clientsocket.recv(2048)
-        except:
+        except socket.timeout:
             if stopwatch.thread_aborted:
-                timestamp = datetime.datetime.now()
-                print("{0}: Aborting thread {1}".format(str(timestamp), address))
+                print("{0}: Aborting thread {1}".format(str(datetime.datetime.now()), address))
                 break
-            # probably timeout
-            time.sleep(0.1)
+            else:
+                print("{0}: Timeout ignored {1}".format(str(datetime.datetime.now()), address))
+                continue
+        except Exception, exc:
+            print("{0}: Exception ignored {1} {2}".format(str(datetime.datetime.now()), address, exc))
             continue
+        finally:
+            time.sleep(0.1)
+
         timestamp = datetime.datetime.now()
         timestamp_str = str(timestamp)
         try:
