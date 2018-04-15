@@ -1,6 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+'''
+A micro-service for GPS trackers Q50, Q60, Q80, Q90, GW100, GW100S, GW200, GW200S, GW300, GW500S, GW600S, GW700, GW800, GW900, GW900S, GW1000, EW100, K911, Titan Watch Q50
+
+How to use
+
+Figure out your PC external IP address - https://whatismyipaddress.com/
+Open port 4444 in your router NAT
+Run the script using something like
+
+  python main.py
+
+* Configure the url in the tracker device
+
+    pw,123456,YOUR-IP-ADDRESS-HERE,4444# 
+'''
+
 import socket
 import re
 import threading
@@ -11,10 +27,10 @@ import datetime
 import collections
 import enum
 
-'''
-Create an INET, STREAMing socket
-'''
 def open_server_socket(port=4444):
+    '''
+    Create an INET, STREAMing socket
+    '''
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(2.0)
     hostname = "0.0.0.0"  #socket.gethostname()
@@ -34,13 +50,13 @@ class ParsingResult(enum.Enum):
     Failed = 2
     Empty = 3
 
-'''
-I am getting something like 
-[3G*1452592884*005F*UD2,130418,145006,V,32.180737,N,34.8552780,65,55,5]
-'''
 def get_coordinates(data):
-    pattern_prompt = "\[3G.([0-9]+)*.+,0,0,[0-9]+\]"
-    pattern_coordinates = "\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
+    '''
+    I am getting something like 
+    [3G*1452592884*005F*UD2,130418,145006,V,32.180737,N,34.8552780,65,55,5]
+    '''
+    pattern_prompt = r"\[3G.([0-9]+)*.+,0,0,[0-9]+\]"
+    pattern_coordinates = r"\[3G.([0-9]+).+,([0-9.]+),N,([0-9.]+),.+\]"
     m_coordinates = re.match(pattern_coordinates, data)
     m_prompt = re.match(pattern_prompt, data)
 
@@ -88,10 +104,11 @@ def client_thread(clientsocket, address, stopwatch):
             data = clientsocket.recv(2048)
         except:
             if stopwatch.thread_aborted:
+                timestamp = datetime.datetime.now()
                 print("{0}: Aborting thread {1}".format(str(timestamp), address))
                 break
             # probably timeout
-            time.sleep(0.1) 
+            time.sleep(0.1)
             continue
         timestamp = datetime.datetime.now()
         timestamp_str = str(timestamp)
@@ -114,7 +131,7 @@ def client_thread(clientsocket, address, stopwatch):
     print("{0}: close {1}".format(str(datetime.datetime.now()), address))
     close_socket(clientsocket, address)
     #sys.exit()
-    
+
 clients = {}
 
 def accept_loop():
@@ -129,7 +146,6 @@ def accept_loop():
         stopwatch = Stopwatch()
         ct = threading.Thread(target=client_thread, args=(clientsocket, address, stopwatch))
         clients[(clientsocket, address)] = (ct, stopwatch)
-        
         ct.run()
 
 port = 4444
