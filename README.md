@@ -11,13 +11,9 @@ Titan Watch Q50
 
 * Figure out your PC external IP address - https://whatismyipaddress.com/
 * Open port 4444 in your router NAT
-* Run the script using something like
+* Run the script using something like```python main.py```
 
-    python main.py
-
-* Configure the url in the tracker device
-
-    pw,123456,YOUR-IP-ADDRESS-HERE,4444# 
+* Configure the url in the tracker device```pw,123456,YOUR-IP-ADDRESS-HERE,4444#```
 
 
 Reponse to the command:
