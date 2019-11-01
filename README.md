@@ -51,6 +51,7 @@ Report looks like this
 
 Links
 
+*  https://findmykids.org/blog/en/setting-of-gps-watch-for-kids-using-sms-commands
 *  https://www.gpswox.com/en/supported-gps-trackers/watch/jm09-q50-children-watch
 *  https://github.com/freshworkstudio/gps-tracking-nodejs/issues/17
 *  http://livegpstracks.com/forum/viewtopic.php?p=6483#p6483
