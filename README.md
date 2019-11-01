@@ -46,6 +46,10 @@ Report looks like this
 
 
 
+The following SMS command will return the location
+
+    pw,123456,url#
+
 
 
 
