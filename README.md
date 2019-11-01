@@ -55,6 +55,7 @@ The following SMS command will return the location
 
 Links
 
+*  https://smartbabystore.ru/sms_command
 *  https://findmykids.org/blog/en/setting-of-gps-watch-for-kids-using-sms-commands
 *  https://www.gpswox.com/en/supported-gps-trackers/watch/jm09-q50-children-watch
 *  https://github.com/freshworkstudio/gps-tracking-nodejs/issues/17
